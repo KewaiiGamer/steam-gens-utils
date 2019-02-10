@@ -3,7 +3,6 @@ let fileOutput = process.argv[3];
 let accounts = require("./"+file);
 let config = require("./config.json");
 let format = config.format;
-console.log(format);
 let parts = format.split(":");
 const fs = require('fs');
 
@@ -20,6 +19,5 @@ fs.writeFile("./"+fileOutput, output, function(err) {
     if(err) {
         return console.log(err);
     }
-
     console.log("Accounts converted");
 });
