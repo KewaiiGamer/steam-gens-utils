@@ -1,13 +1,13 @@
 #!/bin/bash
 echo "Script made by Kewaii#3167"
 oldQty=0
-qty=($(wc -l accounts.txt))
+qty=($(wc -l username_password.txt))
 oldQty=qty
 echo $(date -u +%T) $qty accounts found
 sleep 60;
 everysec=false
 while true; do
-  newQty=($(wc -l accounts.txt))
+  newQty=($(wc -l username_password.txt))
   difference=$((newQty - oldQty))
   oldQty=$newQty
   if [ "$difference" = 0 ]; then
