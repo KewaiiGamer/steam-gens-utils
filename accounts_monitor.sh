@@ -1,13 +1,27 @@
 #!/bin/bash
 echo "Script made by Kewaii#3167"
+if [ ! "$2" ]; then
+ read -p "Type file name. [accounts.txt]:" accounts
+ accounts=${accounts:-accounts.txt}
+else
+ accounts=$2
+fi
+
+if [ ! "$1" ]; then
+ read -p "Type path where all generators are located. [.]:" path
+ path=${path:-.}
+else
+ path=$1
+fi
+
 oldQty=0
-qty=($(wc -l accounts.txt))
+qty=($(countlines.sh $path $accounts))
 oldQty=qty
 echo $(date -u +%T) $qty accounts found
 sleep 60;
 everysec=false
 while true; do
-  newQty=($(wc -l accounts.txt))
+  newQty=($(countlines.sh $path $accounts))
   difference=$((newQty - oldQty))
   oldQty=$newQty
   if [ "$difference" = 0 ]; then
